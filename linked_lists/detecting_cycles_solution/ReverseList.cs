@@ -33,7 +33,7 @@ namespace detecting_cycles_solution
                 prev = curr;
                 curr = tmp;
 
-                if (prev.Value == null)
+                if (curr == null)
                 {
                     _head = prev;
                 }
@@ -60,12 +60,11 @@ namespace detecting_cycles_solution
         {
             var a = new Node("A", null);
             var b = new Node("B", null);
-            var c = new Node("C", null);
-            var tail = new Node(null, null);
+            var c = new Node("C", null);            
 
             a.Next = b;
             b.Next = c;
-            c.Next = tail;
+            c.Next = null;
 
             var rList = new ReverseLinkedList(a);
             rList.Solve();
