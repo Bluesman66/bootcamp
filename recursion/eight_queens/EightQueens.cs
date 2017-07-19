@@ -4,12 +4,10 @@ namespace eight_queens
 {
     class EightQueens
     {
-        private static int[,] _board;
-        private int _numQueens;
+        private static int[,] _board;        
 
         public EightQueens()
-        {
-            _numQueens = 0;
+        {            
             _board = new int[8, 8];
 
             for (int i = 0; i < 8; i++)
@@ -54,42 +52,35 @@ namespace eight_queens
 
         public bool ValidMove(int x, int y)
         {
-            for (int k = 0; k < 8; k++)
+            for (int i = 0; i < 8; i++)
             {
-                if (this[x, k])
+                if (this[x, i])
                     return false;
 
-                if (this[k, y])
+                if (this[i, y])
                     return false;
 
-                if (this[x - k, y - k])
+                if (this[x - i, y - i])
                     return false;
 
-                if (this[x - k, y + k])
+                if (this[x - i, y + i])
                     return false;
 
-                if (this[x + k, y - k])
+                if (this[x + i, y - i])
                     return false;
 
-                if (this[x + k, y + k])
+                if (this[x + i, y + i])
                     return false;
             }
             return true;
         }
 
-        public int PlaceQueen(int x, int y, bool validMove)
+        public void PlaceQueen(int x, int y, bool validMove)
         {
-            if (validMove)
-            {
-                _board[x, y] = 1;
-                _numQueens++;
-                return 0;
-            }
-            else
-            {
+            if (validMove)            
+                _board[x, y] = 1;                            
+            else            
                 _board[x, y] = 0;
-                return 0;
-            }            
         }
 
         public bool this[int x, int y]
